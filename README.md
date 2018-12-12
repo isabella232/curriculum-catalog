@@ -33,7 +33,7 @@ npm run build
 npm start
 ```
 
-Or generate static files for a stand-alone, serverless deployment:
+Or generate static files for a stand-alone (no `node.js`) deployment:
 
 ```bash
 npm run generate
