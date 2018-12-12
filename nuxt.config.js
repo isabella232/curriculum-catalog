@@ -36,5 +36,11 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  /*
+   * Router
+   */
+  router: {
+      base: '/curriculum_modules/'
+  },
 }
