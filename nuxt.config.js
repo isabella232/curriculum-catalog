@@ -41,6 +41,6 @@ module.exports = {
    * Router
    */
   router: {
-      base: '/test_curr_mods/'
+      base: '/curriculum_modules/'
   },
 }
