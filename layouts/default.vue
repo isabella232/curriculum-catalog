@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-toolbar app>
+      <!-- <img height=50 src="/curriculum-catalog/quansight_logo.png" /> -->
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
