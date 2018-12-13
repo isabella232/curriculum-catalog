@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'curriculum_modules',
+    title: 'curriculum-catalog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -41,6 +41,6 @@ module.exports = {
    * Router
    */
   router: {
-      base: '/curriculum_modules/'
+      base: '/curriculum-catalog/'
   },
 }

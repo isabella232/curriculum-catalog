@@ -1,4 +1,4 @@
-# Curriculum Modules
+# Quansight Curriculum Catalog
 
 ### Project from template
 
@@ -7,7 +7,7 @@ This project was generated from a template, like this:
 ```bash
 sudo npm install -g @vue/cli
 sudo npm install -g @vue/cli-init
-vue init vuetifyjs/nuxt curriculum_modules
+vue init vuetifyjs/nuxt curriculum-catalog
 ```
 
 ### Local dev
