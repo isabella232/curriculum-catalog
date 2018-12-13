@@ -2,6 +2,8 @@
   <v-layout justify-center>
     <v-flex xs12 sm12 md10>
 
+      <h2 class="mt-3 mb-3">Course Filters</h2>
+
       <v-autocomplete
         v-model="selected_fields"
         :items="field_options"
@@ -146,14 +148,38 @@
         </template>
       </v-autocomplete>
 
+      <h2 class="mt-3 mb-3">Course Listing</h2>
+
       <v-expansion-panel>
         <v-expansion-panel-content
-          v-for="(item,i) in 5"
+          v-for="(c,i) in mini_courses"
           :key="i"
         >
-          <div slot="header">Item</div>
+          <v-layout slot="header" fill-height>
+            <v-avatar size=35>
+              <v-icon v-if="c.avatar">{{ c.avatar }}</v-icon>
+              <img v-if="c.avatar_url" :src="c.avatar_url">
+            </v-avatar>
+            <v-flex align-self-center ml-2>
+              {{ c.title }}
+            </v-flex>
+            <v-flex align-self-center shrink>
+              <v-chip small disabled outline
+               v-for="(tag,i) in c.tags" :key="i"
+              >
+                {{ tag }}
+              </v-chip>
+            </v-flex>
+          </v-layout>
           <v-card dark color="blue" class="darken-4">
-            <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+            <v-card-text>
+              <ul v-for="(objective,i) in c.objectives" :key="i">
+                <li>{{ objective.text }}</li>
+                <ul v-if="objective.sublist" v-for="sl in objective.sublist">
+                  <li>{{ sl }}</li>
+                </ul>
+              </ul>
+            </v-card-text>
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -171,11 +197,12 @@
   export default {
     components: {
     },
+
     data () {
       var d = {
 
         field_options: [
-          { name: 'Python', avatar_url: './Python.svg' },
+          { name: 'Python', avatar_url: './Python_color.png' },
           { name: 'AI / ML', avatar: 'memory' },
           { name: 'Data Scientist', avatar: 'scatter_plot' }
         ],
@@ -190,6 +217,33 @@
           { name: 'Business', avatar: 'golf_course' }, // alt: money
           { name: 'Developer', avatar: 'settings' },
           { name: 'Scientist', avatar: 'wb_sunny' }
+        ],
+
+        mini_courses: [
+          {
+            title: 'A Taste of Python for Experienced Developers',
+            avatar_url: './Python_color.png',
+            tags: ['Python', 'Introduction', 'Developer'],
+            objectives: [
+              {
+                text: 'Learn the basic language features (and syntax) of Python: Objects, Looping, Conditionals, List, Dictionaries, Functions',
+                sublist: []
+              },
+              {
+                text: 'Be able to use:',
+                sublist: [
+                  'The Python interpreter,',
+                  'IPython as a more feature-full interpreter,',
+                  'Jupyter as the next-generation of IPython,',
+                  'and stand-alone python scripts.'
+                ]
+              },
+              {
+                text: 'Be able to write simple Python scripts (e.g. to replace bash scripts or other simple scripts).',
+                sublist: []
+              }
+            ]
+          }
         ]
 
       }
@@ -200,6 +254,7 @@
 
       return d
     },
+
     methods: {
       remove_field (item) {
         const index = this.selected_fields.indexOf(item.name)
