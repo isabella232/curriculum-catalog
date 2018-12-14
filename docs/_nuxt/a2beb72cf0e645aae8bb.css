@@ -1,0 +1,1 @@
+.list-enter-active,.list-leave-active{transition:all .3s}.list-enter,.list-leave-to{opacity:0;-webkit-transform:translateX(5vw);transform:translateX(5vw)}.list-enter-to,.list-leave{opacity:1}.list-move{transition:all .3s}

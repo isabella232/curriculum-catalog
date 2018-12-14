@@ -103,9 +103,10 @@
       <h2 class="mt-3 mb-3">Course Listing</h2>
 
       <v-expansion-panel>
+        <transition-group name="list" tag="v-expansion-panel">
         <v-expansion-panel-content
-          v-for="(c,i) in mini_courses"
-          :key="i"
+          v-for="c in active_courses"
+          :key="c.index"
         >
           <v-layout slot="header" fill-height>
             <v-avatar size=35 :tile="false">
@@ -134,14 +135,31 @@
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
+        </transition-group>
       </v-expansion-panel>
     </v-flex>
   </v-layout>
 </template>
 
 <style>
-  .toggle-button-active {
-    background-color: red
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s;
+  }
+
+  .list-enter,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(5vw);
+  }
+
+  .list-enter-to,
+  .list-leave {
+    opacity: 1;
+  }
+
+  .list-move {
+    transition: all 0.3s;
   }
 </style>
 
@@ -808,7 +826,25 @@
       d.selected_levels = d.level_options.map(rec => rec.name)
       // d.selected_backgrounds = d.background_options.map(rec => rec.name)
 
+      for (var i = 0; i < d.mini_courses.length; i++) {
+        d.mini_courses[i].index = i
+      }
+
       return d
+    },
+
+    computed: {
+      active_courses () {
+        var active = []
+        for (var i = 0; i < this.mini_courses.length; i++) {
+          var fieldTag = this.mini_courses[i].tags[0]
+          var levelTag = this.mini_courses[i].tags[1]
+          if (this.selected_fields.includes(fieldTag) && this.selected_levels.includes(levelTag)) {
+            active.push(this.mini_courses[i])
+          }
+        }
+        return active
+      }
     },
 
     methods: {
