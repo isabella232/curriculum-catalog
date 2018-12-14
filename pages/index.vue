@@ -223,7 +223,7 @@
             tags: ['Python', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn the idiomatic ways to loop in Python: enumerate, zip, sorted, reversed, itertools.',
+                text: 'Apply the idiomatic ways to loop in Python: enumerate, zip, sorted, reversed, itertools.',
                 sublist: []
               },
               {
@@ -231,11 +231,11 @@
                 sublist: []
               },
               {
-                text: 'Use and build generator (functions that `yield`).',
+                text: 'Use and build generators (functions that `yield`).',
                 sublist: []
               },
               {
-                text: 'Learn generator expressions and list comprehensions.',
+                text: 'Construct generator expressions and list comprehensions.',
                 sublist: []
               }
             ]
@@ -247,71 +247,71 @@
             tags: ['Python', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn the most common coding conventions from both PEP8 and Google’s Python Style Guide.',
+                text: 'Implement the most common coding conventions from both PEP8 and Google’s Python Style Guide.',
                 sublist: []
               },
               {
-                text: 'Learn a little what it means to be “Pythonic”: The Python Manifesto, Coding with Intent, writing “Beautiful” code.',
+                text: 'Explain what it means to be “Pythonic”: The Python Manifesto, Coding with Intent, writing “Beautiful” code.',
                 sublist: []
               }
             ]
           },
 
           {
-            title: 'Python Builtin Modules and Data Structures',
+            title: 'Python Built-in Modules and Data Structures',
             avatar_url: './Python_color.png',
             tags: ['Python', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn the features of the `collections` builtin module: defaultdict, Counter, namedtuple, deque, etc.',
+                text: 'Use and distinguish between the features of the `collections` built-in module: defaultdict, Counter, namedtuple, deque, etc.',
                 sublist: []
               },
               {
-                text: 'Be able to call low-level OS function through the builtin `os` module.',
+                text: 'Call low-level OS function through the built-in `os` module.',
                 sublist: []
               },
               {
-                text: 'Be able to read/write files with various formats: XML, JSON, CSV, MS Excel, SQLite, pickle.',
+                text: 'Read/write files with various formats: XML, JSON, CSV, MS Excel, SQLite, pickle.',
                 sublist: []
               },
               {
-                text: 'Learn how to manipulate strings and dates in Python.',
+                text: 'Manipulate strings and dates in Python.',
                 sublist: []
               }
             ]
           },
 
           {
-            title: 'Python Functions: First-class-ness, Callbacks, Closures, and Decorators',
+            title: 'Python Functions: First-class Objects, Callbacks, Closures, and Decorators',
             avatar_url: './Python_color.png',
             tags: ['Python', 'Intermediate'],
             objectives: [
               {
-                text: 'Understand functions as a first-class type in Python:',
+                text: 'Explain the significance that functions are a first-class type in Python.',
                 sublist: []
               },
               {
-                text: 'Be able to pass functions as parameters to other functions (e.g. sort, pd.apply, etc.)',
+                text: 'Pass functions as parameters to other functions (e.g. sort, pd.apply, etc.)',
                 sublist: []
               },
               {
-                text: 'Understand and be able to write function closures:',
+                text: 'Write function closures:',
                 sublist: []
               },
               {
-                text: 'Be able to return new functions from another function.',
+                text: 'Return new functions from another function.',
                 sublist: []
               },
               {
-                text: 'Understand and be able to write function decorators:',
+                text: 'Construct and apply function decorators appropriately',
                 sublist: []
               },
               {
-                text: 'Understand decorators as a design pattern.',
+                text: 'Explain the significance of decorators as a design pattern.',
                 sublist: []
               },
               {
-                text: 'Understand Python’s decorator syntax (“syntactic sugar”).',
+                text: 'Write code using Python’s decorator syntax (“syntactic sugar”).',
                 sublist: []
               }
             ]
@@ -323,11 +323,11 @@
             tags: ['Python', 'Advanced'],
             objectives: [
               {
-                text: 'Learn Python’s class syntax and scoping rules (not what you’d expect!)',
+                text: 'Utilize Python’s class syntax and scoping rules (not what you’d expect!)',
                 sublist: []
               },
               {
-                text: 'Understand the difference between statically-typed languages and dynamically-typed languages, and be able to articulate the pros and cons of each.',
+                text: 'Explain the difference between statically-typed languages and dynamically-typed languages, and be able to articulate the pros and cons of each.',
                 sublist: []
               },
               {
@@ -335,18 +335,18 @@
                 sublist: []
               },
               {
-                text: 'Learn (a handful of) Python’s magic methods.',
+                text: 'Utilize Python’s magic methods.',
                 sublist: []
               },
               {
-                text: 'Learn when inheritance makes sense in Python.',
+                text: 'Describe when inheritance makes sense in Python.',
                 sublist: []
               }
             ]
           },
 
           {
-            title: 'Python Case Study: Write a DataFrame object using only Python builtins!',
+            title: 'Python Case Study: Write a DataFrame object using only Python builtins',
             avatar_url: './Python_color.png',
             tags: ['Python', 'Advanced'],
             objectives: [
@@ -354,7 +354,7 @@
                 text: 'Case study requirements:',
                 sublist: [
                   'Use only Python’s builtin modules, data structures and language features.',
-                  'Build a `DataFrame` class (similar to Panda\'s, but with your own spin on things).',
+                  'Build a `DataFrame` class (similar to Pandas, but with your own spin on things).',
                   'Use magic methods to create a flexible and readable interface.',
                   'Write documentation about what features your DataFrame supports, and what features it does not support.'
                 ]
@@ -392,7 +392,7 @@
                 sublist: []
               },
               {
-                text: 'Learn what the GIL is, why it exists, and how to parallelize code despite the GIL (i.e. how to release the GIL in your C-extension to allow parallelism).',
+                text: 'Articulate what the GIL is, why it exists, and how to parallelize code despite the GIL (i.e. how to release the GIL in your C-extension to allow parallelism).',
                 sublist: []
               }
             ]
@@ -404,13 +404,24 @@
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Explore, learn, and practice:',
-                sublist: [
-                  'SciPy for so many things,',
-                  'NumPy for n-dimensional arrays,',
-                  'Pandas for DataFrames,',
-                  'StatsModels for … you guessed it, statistical models!'
-                ]
+                text: 'Utilize basic functionality of SciPy, NumPy, and Pandas.'
+                sublist: []
+              },
+              {
+                text: 'Describe the multitude of uses for SciPy.',
+                sublist: []
+              },
+              {
+                text: 'Describe NumPy n-dimensional arrays and why NumPy is groundbreaking.',
+                sublist: []
+              },
+              {
+                text: 'Explain the use and importance of DataFrames in Pandas.',
+                sublist: []
+              },
+              {
+                text: 'Articulate how StatsModels is used for … you guessed it, statistical models!'
+                sublist: []
               }
             ]
           },
@@ -421,13 +432,20 @@
             tags: ['Data Science', 'Intermediate'],
             objectives: [
               {
-                text: 'Explore, learn, and practice:',
-                sublist: [
-                  'vectorized operations in NumPy,',
-                  'avoiding inefficient combinations of operations with NumPy,',
-                  'distributed computation with Dask (introduction only),',
-                  'GPU computation with Numba (introduction only).'
-                ]
+                text: 'Write vectorized operations in NumPy,',
+                sublist: []
+              },
+              {
+                text: 'Avoid and describe inefficient combinations of operations with NumPy,',
+                sublist: []
+              },
+              {
+                text: 'Explain distributed computation with Dask',
+                sublist: []
+              },
+              {
+                text: 'Describe in detail GPU computation with Numba.'
+                sublist: []
               }
             ]
           },
@@ -438,7 +456,7 @@
             tags: ['Data Science', 'Intermediate'],
             objectives: [
               {
-                text: 'Explore the entire NumPy API (very quickly!) in order to obtain a gut-feeling for it’s overall capabilities (don’t reinvent the wheel).',
+                text: 'Explore the entire NumPy API (very quickly!) to obtain a solid understanding of its overall capabilities.',
                 sublist: []
               }
             ]
@@ -450,19 +468,19 @@
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Be able to recite precisely the answer to “What actually is a p-value?”',
+                text: 'Answer precisely the question “What actually is a p-value?”',
                 sublist: []
               },
               {
-                text: 'Understand the tenets of random sampling and hypothesis testing, and understand its strengths and weaknesses.',
+                text: 'Apply the tenets of random sampling and hypothesis testing, and understand their strengths and weaknesses.',
                 sublist: []
               },
               {
-                text: 'Be able to compute confidence intervals and understand how they relate to hypothesis testing.',
+                text: 'Compute confidence intervals and understand how they relate to hypothesis testing.',
                 sublist: []
               },
               {
-                text: 'Be able to compute p-values, confidence intervals, and run hypothesis tests in Python with SciPy.',
+                text: 'Calculate p-values, confidence intervals, and run hypothesis tests in Python with SciPy.',
                 sublist: []
               }
             ]
@@ -474,19 +492,19 @@
             tags: ['Data Science', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn the concept of random variables.',
+                text: 'Define what a random variable is.',
                 sublist: []
               },
               {
-                text: 'Understand the difference between continuous random variables and discrete random variables.',
+                text: 'Articulate the difference between continuous random variables and discrete random variables.',
                 sublist: []
               },
               {
-                text: 'Understand the the common probability distributions (normal, uniform, gamma, poison, bernoulli, binomial, etc).',
+                text: 'Describe the the common probability distributions (normal, uniform, gamma, poison, bernoulli, binomial, etc).',
                 sublist: []
               },
               {
-                text: 'Be able to compute PDFs, PMFs, CDFs, etc using Python with SciPy.',
+                text: 'Compute PDFs, PMFs, CDFs, etc using Python with SciPy.',
                 sublist: []
               },
               {
@@ -502,43 +520,47 @@
             tags: ['Data Science', 'Advanced'],
             objectives: [
               {
-                text: 'Learn and practice:',
-                sublist: [
-                  'Bootstrapping,',
-                  'Bayesian statistics,',
-                  'Why they are “modern” methods.'
-                ]
+                text: 'Understand and apply Bootstrap Method',
+                sublist: []
+              },
+              {
+                text: 'Apply Bayesian statistics to datasets using Python',
+                sublist: []
+              },
+              {
+                text: 'Articulate “modern” statistical methods in Python'
+                sublist: []
               }
             ]
           },
 
           {
-            title: 'Exploratory Data Analysis with Pandas: Baisc Operations',
+            title: 'Exploratory Data Analysis with Pandas: Basic Operations',
             avatar_url: './pandas_logo.png',
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Learn to read data into Pandas DataFrames from common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
+                text: 'Read data into Pandas DataFrames from common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
                 sublist: []
               },
               {
-                text: 'Be able to convert to the proper datatypes, and view summary statistics of a DataFrame.',
+                text: 'Convert to the proper datatypes, and view summary statistics of a DataFrame.',
                 sublist: []
               },
               {
-                text: 'Learn to filtering data using Series objects, indexing, and boolean masks.',
+                text: 'Filter data using Series objects, indexing, and boolean masks.',
                 sublist: []
               },
               {
-                text: 'Be able to merge/append/concatenate DataFrames.',
+                text: 'Merge, append, and concatenate DataFrames.',
                 sublist: []
               },
               {
-                text: 'Be able to export data to common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
+                text: 'Export data to common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
                 sublist: []
               },
               {
-                text: 'Learn how to create basic plots through Pandas.',
+                text: 'Construct basic plots through Pandas.',
                 sublist: []
               }
             ]
@@ -550,49 +572,56 @@
             tags: ['Data Science', 'Intermediate'],
             objectives: [
               {
-                text: 'Be able to transform data within DataFrames and Series (including datetime and string transformations).',
+                text: 'Transform data within DataFrames and Series using datetime and string transformations.',
                 sublist: []
               },
               {
-                text: 'Understand and use the group-by operations and workflow of:',
-                sublist: [
-                  'Aggregation',
-                  'Transformation',
-                  'Filtration'
-                ]
+                text: 'Utilize group-by operations and workflow of aggregation, transformation, and filtration.',
+                sublist: []
               }
             ]
           },
 
           {
-            title: 'Exploratory Data Analysis with Pandas: Optimizations, Milti-index, and Time Series',
+            title: 'Exploratory Data Analysis with Pandas: Optimizations, Multi-index, and Time Series',
             avatar_url: './pandas_logo.png',
             tags: ['Data Science', 'Advanced'],
             objectives: [
               {
-                text: 'Learn and practice:',
-                sublist: [
-                  'Why vectorized operations are fast and should always be used.',
-                  'How to recognize and avoid n^2 operations (easy to accidentally do with Pandas; kills performance).',
-                  'The intricacies of the multi-index DataFrames.',
-                  'How to store time-series in Pandas (and date/time manipulation and resampling).'
-                ]
+                text: 'Articulate why vectorized operations are fast and should always be used.',
+                sublist: []
+              },
+              {
+                text: 'Recognize and avoid n^2 operations which kill performance in Pandas.',
+                sublist: []
+              },
+              {
+                text: 'Demonstrate the intricacies of the multi-index DataFrames.',
+                sublist: []
+              },
+              {
+                text: 'Store time-series in Pandas applying date/time manipulation and resampling.'
+                sublist: []
               }
             ]
           },
 
           {
-            title: 'Plotting in Python with Matplotlib',
+            title: 'Plotting in Python with Matplotlib and Convenience Layers',
             avatar_url: './matplotlib-logo-300.png',
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Learn and practice:',
-                sublist: [
-                  'Two interfaces to Matplotlib: global, OOP',
-                  'Seaborn: A convenience layer atop Matplotlib',
-                  'Plotting through Pandas: Another convenience layer'
-                ]
+                text: 'Create plots in Matplotlib using two interfaces: global, OOP',
+                sublist:[]
+              },
+              {
+                text: 'Use Seaborn as a convenience layer atop Matplotlib',
+                sublist:[]
+              },
+              {
+                text: 'Construct plots using Pandas as another convenience layer',
+                sublist:[]
               }
             ]
           },
@@ -603,7 +632,7 @@
             tags: ['Data Science', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn the capabilities of the Bokeh plotting library.',
+                text: 'Explore the capabilities of the Bokeh plotting library.',
                 sublist: []
               },
               {
@@ -611,7 +640,7 @@
                 sublist: []
               },
               {
-                text: 'Use Bokeh to create interactive plots to publish on the Web.',
+                text: 'Publish interactive plots to the web using Bokeh.',
                 sublist: []
               }
             ]
@@ -623,14 +652,14 @@
             tags: ['Data Science', 'Advanced'],
             objectives: [
               {
-                text: 'Create plots using other plotting libraries:',
+                text: 'Create plots using alternative plotting libraries:',
                 sublist: [
                   'Datashader',
                   'GeoViews'
                 ]
               },
               {
-                text: 'Using PyViz as a high-level plotting library.',
+                text: 'Use PyViz as a high-level plotting library.',
                 sublist: []
               }
             ]
@@ -642,11 +671,11 @@
             tags: ['AI / ML', 'Introduction'],
             objectives: [
               {
-                text: 'Be introduced to the three main subfields of Machine Learning through examples, three examples from each of: Supervised, Unsupervised, and Reinforcement.',
+                text: 'Differentiate between the three main subfields of Machine Learning, supervised, unsupervised, and reinforcement, through a hands-on approach',
                 sublist: []
               },
               {
-                text: 'Learn the fundamental methodology of Supervised Machine Learning (function estimation and model validation).',
+                text: 'Apply the fundamental methodology of Supervised Machine Learning (function estimation and model validation).',
                 sublist: []
               }
             ]
@@ -658,13 +687,17 @@
             tags: ['AI / ML', 'Intermediate'],
             objectives: [
               {
-                text: 'Intro to a few simple supervised ML modes:',
+                text: 'Apply several simple supervised ML modes:',
                 sublist: [
                   'Linear regression',
                   'kNN',
                   'Decision trees',
                   'Random Forests',
-                  'Intro to simple unsupervised ML models:',
+                  ]
+              },
+              {
+                text:  'Explore and run simple unsupervised ML models:',
+                sublist: [
                   'K-means',
                   'Hierarchical clustering'
                 ]
@@ -678,7 +711,7 @@
             tags: ['AI / ML', 'Advanced'],
             objectives: [
               {
-                text: 'Intro to more supervised ML models:',
+                text: 'Dive into more complex supervised ML models:',
                 sublist: [
                   'Gradient Boosting (trees, specifically)',
                   'SVMs',
@@ -698,7 +731,7 @@
                 sublist: []
               },
               {
-                text: 'Gain intro experience using scikit-learn with an exercise.',
+                text: 'Explore basic functionality of scikit-learn with a hands-on approach.',
                 sublist: []
               }
             ]
@@ -710,7 +743,7 @@
             tags: ['AI / ML', 'Intermediate'],
             objectives: [
               {
-                text: 'Learn and use scikit-learn’s Pipelines and FeatureUnions to ensure proper (1) reproducibility, (2) validation methodology, and (3) code reusability.',
+                text: 'Use scikit-learn’s Pipelines and FeatureUnions to ensure proper (1) reproducibility, (2) validation methodology, and (3) code reusability.',
                 sublist: []
               },
               {
@@ -746,7 +779,7 @@
                 sublist: []
               },
               {
-                text: 'Gain intro experience using PyTorch with an exercise.',
+                text: 'Explore basic functionality of PyTorch hands-on.',
                 sublist: []
               }
             ]
