@@ -103,6 +103,7 @@
       <h2 class="mt-3 mb-3">Course Listing</h2>
 
       <v-expansion-panel>
+        <transition-group name="list" tag="v-expansion-panel">
         <v-expansion-panel-content
           v-for="c in active_courses"
           :key="c.index"
@@ -134,14 +135,31 @@
             </v-card-text>
           </v-card>
         </v-expansion-panel-content>
+        </transition-group>
       </v-expansion-panel>
     </v-flex>
   </v-layout>
 </template>
 
 <style>
-  .toggle-button-active {
-    background-color: red
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s;
+  }
+
+  .list-enter,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(5vw);
+  }
+
+  .list-enter-to,
+  .list-leave {
+    opacity: 1;
+  }
+
+  .list-move {
+    transition: all 0.3s;
   }
 </style>
 
@@ -776,7 +794,7 @@
       // d.selected_backgrounds = d.background_options.map(rec => rec.name)
 
       for (var i = 0; i < d.mini_courses.length; i++) {
-        d.mini_courses.index = i
+        d.mini_courses[i].index = i
       }
 
       return d
