@@ -104,8 +104,8 @@
 
       <v-expansion-panel>
         <v-expansion-panel-content
-          v-for="(c,i) in mini_courses"
-          :key="i"
+          v-for="c in active_courses"
+          :key="c.index"
         >
           <v-layout slot="header" fill-height>
             <v-avatar size=35 :tile="false">
@@ -775,7 +775,25 @@
       d.selected_levels = d.level_options.map(rec => rec.name)
       // d.selected_backgrounds = d.background_options.map(rec => rec.name)
 
+      for (var i = 0; i < d.mini_courses.length; i++) {
+        d.mini_courses.index = i
+      }
+
       return d
+    },
+
+    computed: {
+      active_courses () {
+        var active = []
+        for (var i = 0; i < this.mini_courses.length; i++) {
+          var fieldTag = this.mini_courses[i].tags[0]
+          var levelTag = this.mini_courses[i].tags[1]
+          if (this.selected_fields.includes(fieldTag) && this.selected_levels.includes(levelTag)) {
+            active.push(this.mini_courses[i])
+          }
+        }
+        return active
+      }
     },
 
     methods: {
