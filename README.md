@@ -39,3 +39,17 @@ Or generate static files for a stand-alone (no `node.js`) deployment:
 npm run generate
 ```
 
+To deploy to GitHub pages, use the following commands:
+```bash
+npm run generate
+rm -rf docs
+cp -r dist docs
+git add docs
+git commit
+git push
+```
+
+It sometimes takes GitHub pages a minute or two to update, but you should see
+the site go live after pushing (and some patience).
+
+

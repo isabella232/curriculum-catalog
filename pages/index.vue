@@ -422,7 +422,7 @@
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Utilize basic functionality of SciPy, NumPy, and Pandas.'
+                text: 'Utilize basic functionality of SciPy, NumPy, and Pandas.',
                 sublist: []
               },
               {
@@ -438,7 +438,7 @@
                 sublist: []
               },
               {
-                text: 'Articulate how StatsModels is used for … you guessed it, statistical models!'
+                text: 'Articulate how StatsModels is used for … you guessed it, statistical models!',
                 sublist: []
               }
             ]
@@ -462,7 +462,7 @@
                 sublist: []
               },
               {
-                text: 'Describe in detail GPU computation with Numba.'
+                text: 'Describe in detail GPU computation with Numba.',
                 sublist: []
               }
             ]
@@ -546,7 +546,7 @@
                 sublist: []
               },
               {
-                text: 'Articulate “modern” statistical methods in Python'
+                text: 'Articulate “modern” statistical methods in Python',
                 sublist: []
               }
             ]
@@ -618,7 +618,7 @@
                 sublist: []
               },
               {
-                text: 'Store time-series in Pandas applying date/time manipulation and resampling.'
+                text: 'Store time-series in Pandas applying date/time manipulation and resampling.',
                 sublist: []
               }
             ]
