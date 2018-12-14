@@ -269,7 +269,7 @@
                 sublist: []
               },
               {
-                text: 'Explain what it means to be “Pythonic”: The Python Manifesto, Coding with Intent, writing “Beautiful” code.',
+                text: 'Demonstrate what it means to be “Pythonic”: The Python Manifesto, Coding with Intent, writing “Beautiful” code.',
                 sublist: []
               }
             ]
@@ -305,7 +305,7 @@
             tags: ['Python', 'Intermediate'],
             objectives: [
               {
-                text: 'Explain the significance that functions are a first-class type in Python.',
+                text: 'Explain the significance of functions being first-class objects in Python.',
                 sublist: []
               },
               {
@@ -558,7 +558,7 @@
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
-                text: 'Read data into Pandas DataFrames from common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
+                text: 'Read data into DataFrames from common formats: CSV, TSV, JSON, XML, HTML, HDF5, SAS, Excel',
                 sublist: []
               },
               {
@@ -705,7 +705,7 @@
             tags: ['AI / ML', 'Intermediate'],
             objectives: [
               {
-                text: 'Apply several simple supervised ML modes:',
+                text: 'Work with several simple supervised ML models:',
                 sublist: [
                   'Linear regression',
                   'kNN',
@@ -761,7 +761,7 @@
             tags: ['AI / ML', 'Intermediate'],
             objectives: [
               {
-                text: 'Use scikit-learn’s Pipelines and FeatureUnions to ensure proper (1) reproducibility, (2) validation methodology, and (3) code reusability.',
+                text: 'Use scikit-learn’s Pipelines and FeatureUnions to ensure proper reproducibility, validation methodology, and code reusability.',
                 sublist: []
               },
               {
