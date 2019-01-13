@@ -625,21 +625,42 @@
           },
 
           {
+            title: 'Processing Excel Files',
+            avatar_url: './logo-connector-excel.png',
+            tags: ['Data Science', 'Intermediate'],
+            objectives: [
+              {
+                text: 'Use OpenPyXL and XlsxWriter to:',
+                sublist: [
+                  'Generate automated reports of Excel usage patterns, such as uses of formulas and external references.',
+                  'Automate the conversion of various data sources to Excel.',
+                  'Automate the standardization of cell formatting and styling.',
+                  'Perform automated validation on a large number of Excel files.'
+                ]
+              },
+              {
+                text: 'Use xlwings to enable real-time integration of Excel and Python.',
+                sublist: []
+              }
+            ]
+          },
+
+          {
             title: 'Plotting in Python with Matplotlib and Convenience Layers',
             avatar_url: './matplotlib-logo-300.png',
             tags: ['Data Science', 'Introduction'],
             objectives: [
               {
                 text: 'Create plots in Matplotlib using two interfaces: global, OOP',
-                sublist:[]
+                sublist: []
               },
               {
                 text: 'Use Seaborn as a convenience layer atop Matplotlib',
-                sublist:[]
+                sublist: []
               },
               {
                 text: 'Construct plots using Pandas as another convenience layer',
-                sublist:[]
+                sublist: []
               }
             ]
           },
@@ -710,11 +731,11 @@
                   'Linear regression',
                   'kNN',
                   'Decision trees',
-                  'Random Forests',
-                  ]
+                  'Random Forests'
+                ]
               },
               {
-                text:  'Explore and run simple unsupervised ML models:',
+                text: 'Explore and run simple unsupervised ML models:',
                 sublist: [
                   'K-means',
                   'Hierarchical clustering'
@@ -817,7 +838,40 @@
                 sublist: []
               }
             ]
+          },
+
+          {
+            title: 'Google Protocol Buffers in Python',
+            avatar_url: './Python_color.png',
+            tags: ['Other', 'Advanced'],
+            objectives: [
+              {
+                text: 'Learn what Google Protocol Buffers are for, and discuss when it makes sense to use them.',
+                sublist: []
+              },
+              {
+                text: 'Create and save a .proto file, which will define the format in which your data will be stored in.',
+                sublist: []
+              },
+              {
+                text: 'Compile the .proto file to generate fast, efficient, robust Python code.',
+                sublist: []
+              },
+              {
+                text: 'Use the generated Python code to store and retrieve objects in the format defined by the original .proto file.',
+                sublist: []
+              },
+              {
+                text: 'Specify a group of fields where at most one of the fields will be set within a single message, using the language\'s "oneof" feature.',
+                sublist: []
+              },
+              {
+                text: 'Split your data definition into several .proto files, and use the language\'s "import" statement to reference definitions which are outside the current file.',
+                sublist: []
+              }
+            ]
           }
+
         ]
 
       }
