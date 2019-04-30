@@ -212,6 +212,10 @@
               {
                 text: 'Be able to write simple Python scripts (e.g. to replace bash scripts or other simple scripts).',
                 sublist: []
+              },
+              {
+                text: 'LAB: Practice Python by finding Happy Numbers!',
+                sublist: []
               }
             ]
           },
@@ -295,6 +299,10 @@
               {
                 text: 'Manipulate strings and dates in Python.',
                 sublist: []
+              },
+              {
+                text: 'LAB: Practice Python: Process CSV files to answers questions about weather patterns.',
+                sublist: []
               }
             ]
           },
@@ -331,6 +339,21 @@
               {
                 text: 'Write code using Python’s decorator syntax (“syntactic sugar”).',
                 sublist: []
+              },
+              {
+                text: '(optional) Use the `pdb` module (the “python debugger” module).',
+                sublist: []
+              },
+              {
+                text: '(optional) Explore graphical python debuggers.',
+                sublist: []
+              },
+              {
+                text: 'LAB: Practice the “DRY” principle; a small codebase will be provided:',
+                sublist: [
+                  'Refactor the codebase to eliminate the repeated code. “Don’t repeat yourself!” Use closures and decorators to achieve this goal.',
+                  'Document the code with docstrings.'
+                ]
               }
             ]
           },
@@ -476,6 +499,12 @@
               {
                 text: 'Explore the entire NumPy API (very quickly!) to obtain a solid understanding of its overall capabilities.',
                 sublist: []
+              },
+              {
+                text: 'LAB: Code golf',
+                sublist: [
+                  'Given a set of challenges, write code to solve each challenge and minimize the number of NumPy function calls. I.e. For each challenge, find and use the most appropriate NumPy function (or collection of functions).'
+                ]
               }
             ]
           },
@@ -614,12 +643,23 @@
                 sublist: []
               },
               {
+                text: 'Learn how Pandas manages memory, slices, views, and copies.',
+                sublist: []
+              },
+              {
                 text: 'Demonstrate the intricacies of the multi-index DataFrames.',
                 sublist: []
               },
               {
                 text: 'Store time-series in Pandas applying date/time manipulation and resampling.',
                 sublist: []
+              },
+              {
+                text: 'LAB: Speed up a slow Pandas pipeline by removing the inefficiencies; a dataset and a small script will be provided:',
+                sublist: [
+                  'Modify the code to make it run faster (we’re talking several orders of magnitude faster).',
+                  'Examine the memory usage of your refactored code. Extrapolate to estimate how large of a similar dataset you would be able to handle on your computer.'
+                ]
               }
             ]
           },
@@ -681,6 +721,12 @@
               {
                 text: 'Publish interactive plots to the web using Bokeh.',
                 sublist: []
+              },
+              {
+                text: 'LAB: Extend a sample Bokeh application to include more functionality',
+                sublist: [
+                  'Given a small codebase which produces a Bokeh plot, extend the codebase to add new functionality. A dataset and a prompt will also be provided.'
+                ]
               }
             ]
           },
