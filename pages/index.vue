@@ -109,6 +109,7 @@
           :key="c.index"
         >
           <v-layout slot="header" fill-height>
+            <input type="checkbox" :id="c.index" :value="c.title" v-model="selectedCourses" @click.stop/>
             <v-avatar size=35 :tile="false">
               <v-icon v-if="c.avatar">{{ c.avatar }}</v-icon>
               <img v-if="c.avatar_url" :src="c.avatar_url">
@@ -137,6 +138,36 @@
         </v-expansion-panel-content>
         </transition-group>
       </v-expansion-panel>
+      <form>
+        <h2 class="mt-3 mb-3">Selected Courses:</h2>
+        <li v-for="course in selectedCourses">
+          {{course.toString()}}
+        </li>
+        <br />
+        <h2 class="mt-3 mb-3">Insert Company Name</h2>
+        <v-text-field
+          label="Example Inc."
+          v-model="company"
+          :error-messages="companyErrors"
+          required
+          single-line
+          solo
+          @input="$v.company.$touch()"
+          @blur="$v.company.$touch()"
+          ></v-text-field>
+        <h2 class="mt-3 mb-3">Insert Email</h2>
+        <v-text-field
+          label="joe@example.com"
+          v-model="email"
+          :error-messages="emailErrors"
+          required
+          single-line
+          solo
+          @input="$v.email.$touch()"
+          @blur="$v.email.$touch()"
+          ></v-text-field>
+        <v-btn @click="send" :disabled="!is_complete">Start Conversation</v-btn>
+      </form>
     </v-flex>
   </v-layout>
 </template>
@@ -164,7 +195,17 @@
 </style>
 
 <script>
+  import { validationMixin } from 'vuelidate'
+  import { required, email } from 'vuelidate/lib/validators'
+
   export default {
+    mixins: [validationMixin],
+
+    validations: {
+      company: { required },
+      email: { required, email }
+    },
+
     components: {
     },
 
@@ -189,6 +230,21 @@
         //   { name: 'Developer', avatar: 'settings' },
         //   { name: 'Scientist', avatar: 'wb_sunny' }
         // ],
+
+        selectedCourses: [],
+
+        company: '',
+
+        email: '',
+
+        custom: {
+          company: {
+            required: () => 'Company Name cannot be empty'
+          },
+          email: {
+            required: () => 'Email cannot be empty'
+          }
+        },
 
         mini_courses: [
           {
@@ -944,6 +1000,25 @@
           }
         }
         return active
+      },
+
+      is_complete () {
+        return this.company && this.email && this.selectedCourses && this.selectedCourses.length && this.$v.email.email && this.$v.email.required && this.$v.company.required
+      },
+
+      companyErrors () {
+        const errors = []
+        if (!this.$v.company.$dirty) return errors
+        !this.$v.company.required && errors.push('Name is required.')
+        return errors
+      },
+
+      emailErrors () {
+        const errors = []
+        if (!this.$v.email.$dirty) return errors
+        !this.$v.email.email && errors.push('Must be valid e-mail')
+        !this.$v.email.required && errors.push('E-mail is required')
+        return errors
       }
     },
 
@@ -955,11 +1030,11 @@
       remove_level (item) {
         const index = this.selected_levels.indexOf(item.name)
         if (index >= 0) this.selected_levels.splice(index, 1)
+      },
+
+      send () {
+        alert('Success! Email Sent! We will get back to you within a week')
       }
-      // remove_background (item) {
-      //   const index = this.selected_backgrounds.indexOf(item.name)
-      //   if (index >= 0) this.selected_backgrounds.splice(index, 1)
-      // }
     }
   }
 </script>
