@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center>
+  <v-layout>
     <v-flex xs12 sm12 md10>
 
       <h2 class="mt-3 mb-3">Course Filters</h2>
@@ -138,12 +138,13 @@
         </v-expansion-panel-content>
         </transition-group>
       </v-expansion-panel>
-      <form>
+      <div class="sidenav-right">
         <h2 class="mt-3 mb-3">Selected Courses:</h2>
         <li v-for="course in selectedCourses">
           {{course.toString()}}
         </li>
-        <br />
+      </div>
+      <form>
         <h2 class="mt-3 mb-3">Insert Company Name</h2>
         <v-text-field
           label="Example Inc."
@@ -191,6 +192,21 @@
 
   .list-move {
     transition: all 0.3s;
+  }
+
+  .sidenav-right {
+    width: 350px;
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    right: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
   }
 </style>
 
@@ -1034,6 +1050,7 @@
 
       send () {
         alert('Success! Email Sent! We will get back to you within a week')
+        window.location = 'https://www.quansight.com/learning'
       }
     }
   }
