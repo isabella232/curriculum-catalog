@@ -1,176 +1,185 @@
 <template>
-  <v-layout>
-    <v-flex xs12 sm12 md10>
+  <v-container grid-list>
+    <v-layout row>
+      <v-flex xs7 sm7 md7>
+        <h2 class="mt-3 mb-3">Course Filters</h2>
 
-      <h2 class="mt-3 mb-3">Course Filters</h2>
-
-      <v-autocomplete
-        v-model="selected_fields"
-        :items="field_options"
-        chips
-        label="Field of Study"
-        item-text="name"
-        item-value="name"
-        multiple
-      >
-        <template
-          slot="selection"
-          slot-scope="data"
+        <v-autocomplete
+          v-model="selected_fields"
+          :items="field_options"
+          chips
+          label="Field of Study"
+          item-text="name"
+          item-value="name"
+          multiple
         >
-          <v-chip
-            :selected="data.selected"
-            close
-            color="primary"
-            outline
-            class="chip--select-multi"
-            @input="remove_field(data.item)"
+          <template
+            slot="selection"
+            slot-scope="data"
           >
-            <v-avatar>
-              <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
-              <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
-            </v-avatar>
-            {{ data.item.name }}
-          </v-chip>
-        </template>
-        <template
-          slot="item"
-          slot-scope="data"
-        >
-          <template v-if="typeof data.item !== 'object'">
-            <v-list-tile-content v-text="data.item"></v-list-tile-content>
+            <v-chip
+              :selected="data.selected"
+              close
+              color="primary"
+              outline
+              class="chip--select-multi"
+              @input="remove_field(data.item)"
+            >
+              <v-avatar>
+                <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
+                <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
+              </v-avatar>
+              {{ data.item.name }}
+            </v-chip>
           </template>
-          <template v-else>
-            <v-list-tile-avatar>
-              <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
-              <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
-              <v-list-tile-sub-title v-html="data.item.group"></v-list-tile-sub-title>
-            </v-list-tile-content>
-          </template>
-        </template>
-      </v-autocomplete>
-
-      <v-autocomplete
-        v-model="selected_levels"
-        :items="level_options"
-        chips
-        label="Level"
-        item-text="name"
-        item-value="name"
-        multiple
-      >
-        <template
-          slot="selection"
-          slot-scope="data"
-        >
-          <v-chip
-            :selected="data.selected"
-            close
-            color="primary"
-            outline
-            class="chip--select-multi"
-            @input="remove_level(data.item)"
+          <template
+            slot="item"
+            slot-scope="data"
           >
-            <v-avatar>
-              <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
-              <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
-            </v-avatar>
-            {{ data.item.name }}
-          </v-chip>
-        </template>
-        <template
-          slot="item"
-          slot-scope="data"
-        >
-          <template v-if="typeof data.item !== 'object'">
-            <v-list-tile-content v-text="data.item"></v-list-tile-content>
+            <template v-if="typeof data.item !== 'object'">
+              <v-list-tile-content v-text="data.item"></v-list-tile-content>
+            </template>
+            <template v-else>
+              <v-list-tile-avatar>
+                <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
+                <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="data.item.group"></v-list-tile-sub-title>
+              </v-list-tile-content>
+            </template>
           </template>
-          <template v-else>
-            <v-list-tile-avatar>
-              <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
-              <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
-              <v-list-tile-sub-title v-html="data.item.group"></v-list-tile-sub-title>
-            </v-list-tile-content>
-          </template>
-        </template>
-      </v-autocomplete>
+        </v-autocomplete>
 
-      <h2 class="mt-3 mb-3">Course Listing</h2>
-
-      <v-expansion-panel>
-        <transition-group name="list" tag="v-expansion-panel">
-        <v-expansion-panel-content
-          v-for="c in active_courses"
-          :key="c.index"
+        <v-autocomplete
+          v-model="selected_levels"
+          :items="level_options"
+          chips
+          label="Level"
+          item-text="name"
+          item-value="name"
+          multiple
         >
-          <v-layout slot="header" fill-height>
-            <input type="checkbox" :id="c.index" :value="c.title" v-model="selectedCourses" @click.stop/>
-            <v-avatar size=35 :tile="false">
-              <v-icon v-if="c.avatar">{{ c.avatar }}</v-icon>
-              <img v-if="c.avatar_url" :src="c.avatar_url">
-            </v-avatar>
-            <v-flex align-self-center ml-2>
-              {{ c.title }}
-            </v-flex>
-            <v-flex align-self-center shrink>
-              <v-chip small disabled outline
-               v-for="(tag,i) in c.tags" :key="i"
-              >
-                {{ tag }}
-              </v-chip>
-            </v-flex>
-          </v-layout>
-          <v-card dark color="blue" class="darken-4">
-            <v-card-text>
-              <ul v-for="(objective,i) in c.objectives" :key="i">
-                <li>{{ objective.text }}</li>
-                <ul v-if="objective.sublist" v-for="sl in objective.sublist">
-                  <li>{{ sl }}</li>
+          <template
+            slot="selection"
+            slot-scope="data"
+          >
+            <v-chip
+              :selected="data.selected"
+              close
+              color="primary"
+              outline
+              class="chip--select-multi"
+              @input="remove_level(data.item)"
+            >
+              <v-avatar>
+                <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
+                <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
+              </v-avatar>
+              {{ data.item.name }}
+            </v-chip>
+          </template>
+          <template
+            slot="item"
+            slot-scope="data"
+          >
+            <template v-if="typeof data.item !== 'object'">
+              <v-list-tile-content v-text="data.item"></v-list-tile-content>
+            </template>
+            <template v-else>
+              <v-list-tile-avatar>
+                <v-icon v-if="data.item.avatar">{{ data.item.avatar }}</v-icon>
+                <img v-if="data.item.avatar_url" :src="data.item.avatar_url">
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title v-html="data.item.name"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="data.item.group"></v-list-tile-sub-title>
+              </v-list-tile-content>
+            </template>
+          </template>
+        </v-autocomplete>
+
+        <h2 class="mt-3 mb-3">Course Listing</h2>
+        <h3>Each course lasts for half a day (3 hours)</h3>
+        <v-expansion-panel>
+          <transition-group name="list" tag="v-expansion-panel">
+          <v-expansion-panel-content
+            v-for="c in active_courses"
+            :key="c.index"
+          >
+            <v-layout slot="header" fill-height align-center>
+              <input type="checkbox" :id="c.index" :value="c.title" v-model="selectedCourses" @click.stop/>
+              <v-avatar class="ml-2" size=35 :tile="false">
+                <v-icon v-if="c.avatar">{{ c.avatar }}</v-icon>
+                <img v-if="c.avatar_url" :src="c.avatar_url">
+              </v-avatar>
+              <v-flex align-self-center ml-2>
+                {{ c.title }}
+              </v-flex>
+              <v-flex align-self-center shrink>
+                <v-chip small disabled outline
+                 v-for="(tag,i) in c.tags" :key="i"
+                >
+                  {{ tag }}
+                </v-chip>
+              </v-flex>
+            </v-layout>
+            <v-card dark color="blue" class="darken-4">
+              <v-card-text>
+                <ul v-for="(objective,i) in c.objectives" :key="i">
+                  <li>{{ objective.text }}</li>
+                  <ul v-if="objective.sublist" v-for="sl in objective.sublist">
+                    <li>{{ sl }}</li>
+                  </ul>
                 </ul>
-              </ul>
-            </v-card-text>
-          </v-card>
-        </v-expansion-panel-content>
-        </transition-group>
-      </v-expansion-panel>
-      <div class="sidenav-right">
-        <h2 class="mt-3 mb-3">Selected Courses:</h2>
-        <li v-for="course in selectedCourses">
-          {{course.toString()}}
-        </li>
-      </div>
-      <form>
-        <h2 class="mt-3 mb-3">Insert Company Name</h2>
-        <v-text-field
-          label="Example Inc."
-          v-model="company"
-          :error-messages="companyErrors"
-          required
-          single-line
-          solo
-          @input="$v.company.$touch()"
-          @blur="$v.company.$touch()"
-          ></v-text-field>
-        <h2 class="mt-3 mb-3">Insert Email</h2>
-        <v-text-field
-          label="joe@example.com"
-          v-model="email"
-          :error-messages="emailErrors"
-          required
-          single-line
-          solo
-          @input="$v.email.$touch()"
-          @blur="$v.email.$touch()"
-          ></v-text-field>
-        <v-btn @click="send" :disabled="!is_complete">Start Conversation</v-btn>
-      </form>
-    </v-flex>
-  </v-layout>
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+          </transition-group>
+        </v-expansion-panel>
+
+        <form>
+          <h2 class="mt-3 mb-3">Insert Company Name</h2>
+          <v-text-field
+            label="Example Inc."
+            v-model="company"
+            :error-messages="companyErrors"
+            required
+            single-line
+            solo
+            @input="$v.company.$touch()"
+            @blur="$v.company.$touch()"
+            ></v-text-field>
+          <h2 class="mt-3 mb-3">Insert Email</h2>
+          <v-text-field
+            label="joe@example.com"
+            v-model="email"
+            :error-messages="emailErrors"
+            required
+            single-line
+            solo
+            @input="$v.email.$touch()"
+            @blur="$v.email.$touch()"
+            ></v-text-field>
+          <v-btn @click="send" :disabled="!is_complete">Start Conversation</v-btn>
+        </form>
+      </v-flex>
+
+      <v-flex class="fixed" offset-xs7 offset-sm7 offset-md7) xs5 sm5 md5>
+        <h2 class="mt-3 mb-3">Selected Courses</h2>
+        <h4 class="mt-3 mb-3">Use the checkboxes to select courses you are interested in learning more about</h4>
+        <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
+        <v-card-text>
+          <li v-for="course in selectedCourses">
+            {{course.toString()}}
+          </li>
+        </v-card-text>
+      </v-flex>
+
+
+    </v-layout>
+  </v-container>
 </template>
 
 <style>
@@ -194,15 +203,8 @@
     transition: all 0.3s;
   }
 
-  .sidenav-right {
-    width: 350px;
+  .fixed {
     position: fixed;
-    z-index: 1;
-    top: 80px;
-    right: 10px;
-    background: #eee;
-    overflow-x: hidden;
-    padding: 8px 0;
   }
 
   @media screen and (max-height: 450px) {
