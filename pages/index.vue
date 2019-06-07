@@ -138,9 +138,18 @@
           </v-expansion-panel-content>
           </transition-group>
         </v-expansion-panel>
+      </v-flex>
 
-        <form>
-          <h2 class="mt-3 mb-3">Insert Company Name</h2>
+      <v-flex class="fixed" offset-xs7 offset-sm7 offset-md7 xs5 sm5 md5>
+        <h2 class="mt-3 mb-3">Selected Courses</h2>
+        <h4 class="mt-3 mb-3">Use the checkboxes to select courses you are interested in learning more about</h4>
+        <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
+        <li v-for="course in selectedCourses">
+          {{course.toString()}}
+        </li>
+
+        <form class="bottom">
+          <h2>Insert Company Name</h2>
           <v-text-field
             label="Example Inc."
             v-model="company"
@@ -151,7 +160,7 @@
             @input="$v.company.$touch()"
             @blur="$v.company.$touch()"
             ></v-text-field>
-          <h2 class="mt-3 mb-3">Insert Email</h2>
+          <h2>Insert Email</h2>
           <v-text-field
             label="joe@example.com"
             v-model="email"
@@ -165,19 +174,6 @@
           <v-btn @click="send" :disabled="!is_complete">Start Conversation</v-btn>
         </form>
       </v-flex>
-
-      <v-flex class="fixed" offset-xs7 offset-sm7 offset-md7) xs5 sm5 md5>
-        <h2 class="mt-3 mb-3">Selected Courses</h2>
-        <h4 class="mt-3 mb-3">Use the checkboxes to select courses you are interested in learning more about</h4>
-        <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
-        <v-card-text>
-          <li v-for="course in selectedCourses">
-            {{course.toString()}}
-          </li>
-        </v-card-text>
-      </v-flex>
-
-
     </v-layout>
   </v-container>
 </template>
@@ -207,8 +203,9 @@
     position: fixed;
   }
 
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
+  .bottom {
+    position: fixed;
+    bottom: 0;
   }
 </style>
 
