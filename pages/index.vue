@@ -216,8 +216,8 @@
   }
 
   .scrollable {
-    max-height: 280px;
-    min-height: 280px;
+    max-height: 20vh;
+    min-height: 20vh;
     overflow: hidden;
     overflow-y: auto;
   }
