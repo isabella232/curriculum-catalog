@@ -1,7 +1,7 @@
 <template>
-  <v-container grid-list>
+  <v-container>
     <v-layout row>
-      <v-flex xs7 sm7 md7>
+      <v-flex xs12 sm12 md12>
         <h2 class="mt-3 mb-3">Course Filters</h2>
 
         <v-autocomplete
@@ -99,7 +99,11 @@
             </template>
           </template>
         </v-autocomplete>
+      </v-flex>
+    </v-layout>
 
+    <v-layout row>
+      <v-flex xs7 sm7 md7>
         <h2 class="mt-3 mb-3">Course Listing</h2>
         <h3>Each course lasts for half a day (3 hours)</h3>
         <v-expansion-panel>
@@ -140,39 +144,44 @@
         </v-expansion-panel>
       </v-flex>
 
-      <v-flex class="fixed" offset-xs7 offset-sm7 offset-md7 xs5 sm5 md5>
-        <h2 class="mt-3 mb-3">Selected Courses</h2>
-        <h4 class="mt-3 mb-3">Use the checkboxes to select courses you are interested in learning more about</h4>
-        <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
-        <li v-for="course in selectedCourses">
-          {{course.toString()}}
-        </li>
+      <v-flex offset-xs1 offset-sm1 offset-md1 xs4 sm4 md4>
+        <v-layout column fill-height>
+          <div class="sticky">
+            <h2 class="mt-3">Selected Courses</h2>
+            <h4>Use the checkboxes to select courses you are interested in learning more about</h4>
+            <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
+            <div class="scrollable">
+              <li v-for="course in selectedCourses">
+                {{course.toString()}}
+              </li>
 
-        <form class="bottom">
-          <h2>Insert Company Name</h2>
-          <v-text-field
-            label="Example Inc."
-            v-model="company"
-            :error-messages="companyErrors"
-            required
-            single-line
-            solo
-            @input="$v.company.$touch()"
-            @blur="$v.company.$touch()"
-            ></v-text-field>
-          <h2>Insert Email</h2>
-          <v-text-field
-            label="joe@example.com"
-            v-model="email"
-            :error-messages="emailErrors"
-            required
-            single-line
-            solo
-            @input="$v.email.$touch()"
-            @blur="$v.email.$touch()"
-            ></v-text-field>
-          <v-btn @click="send" :disabled="!is_complete">Start Conversation</v-btn>
-        </form>
+            </div>
+
+            <v-text-field
+              label="Insert Company Name"
+              hint="Example Inc."
+              v-model="company"
+              :error-messages="companyErrors"
+              required
+              persistent-hint
+              @input="$v.company.$touch()"
+              @blur="$v.company.$touch()"
+              ></v-text-field>
+
+            <v-text-field
+              label="Insert Email"
+              hint="example@email.com"
+              v-model="email"
+              :error-messages="emailErrors"
+              required
+              persistent-hint
+              @input="$v.email.$touch()"
+              @blur="$v.email.$touch()"
+              ></v-text-field>
+
+            <v-btn block @click="send" :disabled="!is_complete">Start Conversation</v-btn>
+          </div>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -199,14 +208,20 @@
     transition: all 0.3s;
   }
 
-  .fixed {
-    position: fixed;
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    bottom: 32px;
   }
 
-  .bottom {
-    position: fixed;
-    bottom: 0;
+  .scrollable {
+    max-height: 280px;
+    min-height: 280px;
+    overflow: hidden;
+    overflow-y: auto;
   }
+
 </style>
 
 <script>

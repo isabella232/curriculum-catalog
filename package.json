@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "nuxt": "^2.8.1",
-    "sticky-sidebar": "^3.3.1",
     "vuelidate": "^0.7.4",
     "vuetify": "^1.5.14"
   },
