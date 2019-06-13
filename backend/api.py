@@ -19,7 +19,7 @@ app.config.update(
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
     MAIL_USERNAME='quansighttesting@gmail.com',
-    MAIL_PASSWORD='Testingpassword101'
+    MAIL_PASSWORD='ynrkzeshfyybmmqo'
 )
 
 mail = Mail(app)
