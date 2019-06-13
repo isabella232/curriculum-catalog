@@ -227,6 +227,7 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, email } from 'vuelidate/lib/validators'
+  import axios from 'axios'
 
   export default {
     mixins: [validationMixin],
@@ -1063,6 +1064,13 @@
       },
 
       send () {
+        axios.post('http://127.0.0.1:5000/sendemail', {
+          requester_email: this.email,
+          requester_company: this.company,
+          requested_courses: JSON.stringify(this.selectedCourses)
+        }).then(function (response) {
+          console.log(response)
+        })
         alert('Success! Email Sent! We will get back to you within a week')
         window.location = 'https://www.quansight.com/learning'
       }
