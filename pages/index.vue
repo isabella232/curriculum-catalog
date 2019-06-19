@@ -1,7 +1,16 @@
 <template>
   <v-container>
+    <v-layout row justify-center>
+      <v-flex class="text-sm-center" xs8 sm8 md8>
+        <h1>Welcome to the Quansight Course Builder</h1>
+        <h2>Use the checkboxes to select courses you are interested in learning more about.
+          Don't see your needed course? We are always creating custom content. Select "Help Me Choose a Curriculum"
+          after inputting your email and company name for more info.</h2>
+      </v-flex>
+    </v-layout>
+
     <v-layout row>
-      <v-flex xs12 sm12 md12>
+      <v-flex xs7 sm7 md7>
         <h2 class="mt-3 mb-3">Course Filters</h2>
 
         <v-autocomplete
@@ -99,11 +108,6 @@
             </template>
           </template>
         </v-autocomplete>
-      </v-flex>
-    </v-layout>
-
-    <v-layout row>
-      <v-flex xs7 sm7 md7>
         <h2 class="mt-3 mb-3">Course Listing</h2>
         <h3>Each course lasts for half a day (3 hours)</h3>
         <v-expansion-panel>
@@ -148,13 +152,11 @@
         <v-layout column fill-height>
           <div class="sticky">
             <h2 class="mt-3">Selected Courses</h2>
-            <h4>Use the checkboxes to select courses you are interested in learning more about</h4>
-            <h5 class="mt-3 mb-3">Selected courses will take {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
+            <h5 class="mt-3 mb-3">Selected courses will take an estimated {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
             <div class="scrollable">
               <li v-for="course in selectedCourses">
                 {{course.toString()}}
               </li>
-
             </div>
 
             <v-text-field
@@ -179,7 +181,9 @@
               @blur="$v.email.$touch()"
               ></v-text-field>
 
-            <v-btn block @click="send" :disabled="!is_complete">Start Conversation</v-btn>
+            <v-btn block color="success" @click="send" :disabled="!is_complete">Start Conversation</v-btn>
+            <v-btn block color="info" @click="send_courses" :disabled="!is_complete">Just Send Me My Courses</v-btn>
+            <v-btn block color="info" @click="send_help_info" :disabled="!form_is_complete">Help Me Choose a Curriculum</v-btn>
           </div>
         </v-layout>
       </v-flex>
@@ -1037,6 +1041,10 @@
         return this.company && this.email && this.selectedCourses && this.selectedCourses.length && this.$v.email.email && this.$v.email.required && this.$v.company.required
       },
 
+      form_is_complete () {
+        return this.company && this.email && this.$v.email.email && this.$v.email.required && this.$v.company.required
+      },
+
       companyErrors () {
         const errors = []
         if (!this.$v.company.$dirty) return errors
@@ -1064,10 +1072,33 @@
       },
 
       send () {
-        axios.post('http://127.0.0.1:5000/sendemail', {
+        axios.post('http://127.0.0.1:5000/sendmainemail', {
           requester_email: this.email,
           requester_company: this.company,
           requested_courses: JSON.stringify(this.selectedCourses)
+        }).then(function (response) {
+          console.log(response)
+        })
+        alert('Success! Email Sent! We will get back to you within a week')
+        window.location = 'https://www.quansight.com/learning'
+      },
+
+      send_courses () {
+        axios.post('http://127.0.0.1:5000/sendcourseemail', {
+          requester_email: this.email,
+          requester_company: this.company,
+          requested_courses: JSON.stringify(this.selectedCourses)
+        }).then(function (response) {
+          console.log(response)
+        })
+        alert('Success! Email Sent! We will get back to you within a week')
+        window.location = 'https://www.quansight.com/learning'
+      },
+
+      send_help_info () {
+        axios.post('http://127.0.0.1:5000/sendinfohelpemail', {
+          requester_email: this.email,
+          requester_company: this.company
         }).then(function (response) {
           console.log(response)
         })
