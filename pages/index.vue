@@ -215,7 +215,7 @@
   .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 100px;
+    top: 50px;
     bottom: 32px;
   }
 

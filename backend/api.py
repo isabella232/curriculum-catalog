@@ -160,7 +160,7 @@ class SendInfoHelpEmail(Resource):
         htmlmessage = args["requester_company"] + ",<br/>Thank you for your interest in Quansight's training program!" \
                                                   "<br/>You should receive an email within a week requesting a good " \
                                                   "time for a phone, video, or voice call to discuss what it is you " \
-                                                  "need help training.<br/><br/>" \
+                                                  "need to set up a training curriculum.<br/><br/>" \
                                                   "We look forward to helping you,<br/>Quansight<br/>"
         msg = """\
                 <html>
