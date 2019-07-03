@@ -59,7 +59,7 @@ class SendEmail(Resource):
             <body>
                 <p> 
                     """ + qhtmlmessage + """
-                    <img src =""" + imagesrc + """/>
+                    <img src =""" + imagesrc + """ style=\"width:200px\"/>
                 </p>
             </body>
         </html>
@@ -99,8 +99,8 @@ class SendCourseEmail(Resource):
             coursestring += course + "<br/>"
 
         imagesrc = "\"https://drive.google.com/uc?id=1aj4GIMiWdkSF1uqjJBw63tGUIGNk4nbQ\""
-        htmlmessage = args["requester_company"] + ", you have selected these courses:<br/><br/>" + \
-                      coursestring + "<br/>If you would like more information about pricing and the courses, " + \
+        htmlmessage = args["requester_company"] + ", you have selected the following course(s):<br/><br/>" + \
+                      coursestring + "<br/>If you would like more information, " + \
                       "please email us with your list at training@quansight.com.<br/><br/>" + \
                       " Thank you for your interest,<br/>Quansight<br/>"
         msg = """\
@@ -122,7 +122,7 @@ class SendCourseEmail(Resource):
                     <body>
                         <p> 
                             """ + qhtmlmessage + """
-                            <img src =""" + imagesrc + """/>
+                            <img src =""" + imagesrc + """ style=\"width:200px\"/>
                         </p>
                     </body>
                 </html>
@@ -182,7 +182,7 @@ class SendInfoHelpEmail(Resource):
                     <body>
                         <p> 
                             """ + qhtmlmessage + """
-                            <img src =""" + imagesrc + """/>
+                            <img src =""" + imagesrc + """ style=\"width:200px\"/>
                         </p>
                     </body>
                 </html>
