@@ -93,14 +93,11 @@ class SendCourseEmail(Resource):
         qMessage["From"] = sender_email
 
         args = parser.parse_args()
-        courses = json.loads(args["requested_courses"])
-        coursestring = ""
-        for course in courses:
-            coursestring += course + "<br/>"
+        courses = args["requested_courses"]
 
         imagesrc = "\"https://drive.google.com/uc?id=1aj4GIMiWdkSF1uqjJBw63tGUIGNk4nbQ\""
         htmlmessage = args["requester_company"] + ", you have selected the following course(s):<br/><br/>" + \
-                      coursestring + "<br/>If you would like more information, " + \
+                      courses + "<br/>If you would like more information, " + \
                       "please email us with your list at training@quansight.com.<br/><br/>" + \
                       " Thank you for your interest,<br/>Quansight<br/>"
         msg = """\
@@ -115,7 +112,7 @@ class SendCourseEmail(Resource):
                 """
 
         qhtmlmessage = args["requester_company"] + " with email " + args["requester_email"] + " has saved their " + \
-                       "courses about<br/><br/>" + coursestring + "<br/>They may request more info later.<br/><br/>" \
+                       "courses about<br/><br/>" + courses + "<br/>They may request more info later.<br/><br/>" \
                        + "Sent from Quansight Course Training Email<br/>"
         qmsg = """\
                 <html>

@@ -1,11 +1,17 @@
 <template>
   <v-container>
     <v-layout row justify-center>
-      <v-flex class="text-sm-center" xs8 sm8 md8>
-        <h1>Welcome to the Quansight Course Builder</h1>
-        <h2>Use the checkboxes to select courses you are interested in learning more about.
-          Don't see your needed course? We are always creating custom content. Select "Help Me Choose a Curriculum"
-          after inputting your email and company name for more info.</h2>
+      <v-flex class="text-sm-center" xs12 sm11 md8>
+        <h1>Welcome to the Quansight Curriculum Builder</h1><br/>
+      </v-flex>
+    </v-layout>
+    <v-layout row justify-center>
+      <v-flex class="text-sm-center" xs12 sm11 md7>
+        <h2>Feel free to browse the entire course list or use the filters to view just the courses that fit your
+          needs. Click on the course name to see a more detailed description.</h2><br/>
+        <h2>Once you have an idea of the courses you want to consider for your team, use the checkboxes to select
+          the courses that interest you. We will create a list of your selected courses and the time required to
+          complete the curriculum.</h2><br/>
       </v-flex>
     </v-layout>
 
@@ -117,7 +123,7 @@
             :key="c.index"
           >
             <v-layout slot="header" fill-height align-center>
-              <input type="checkbox" :id="c.index" :value="c.title" v-model="selectedCourses" @click.stop/>
+              <input type="checkbox" :id="c.index" :value="c" v-model="selectedCourses" @click.stop/>
               <v-avatar class="ml-2" size=35 :tile="false">
                 <v-icon v-if="c.avatar">{{ c.avatar }}</v-icon>
                 <img v-if="c.avatar_url" :src="c.avatar_url">
@@ -151,17 +157,19 @@
       <v-flex offset-xs1 offset-sm1 offset-md1 xs4 sm4 md4>
         <v-layout column fill-height>
           <div class="sticky">
-            <h2 class="mt-3">Selected Courses</h2>
             <h5 class="mt-3 mb-3">Selected courses will take an estimated {{ selectedCourses.length * 0.5}} days ({{ selectedCourses.length * 3}} hours total)</h5>
             <div class="scrollable">
               <li v-for="course in selectedCourses">
-                {{course.toString()}}
+                {{course.title.toString()}}
               </li>
             </div>
+            <h3 class="mt-3">When you are satisfied with your selected courses, enter your name and email address below
+              to send yourself a copy of the list or request that a Quansight training expert contact you to plan
+              your training engagement.</h3>
 
             <v-text-field
-              label="Insert Company Name"
-              hint="Example Inc."
+              label="Name"
+              hint="First Last"
               v-model="company"
               :error-messages="companyErrors"
               required
@@ -171,7 +179,7 @@
               ></v-text-field>
 
             <v-text-field
-              label="Insert Email"
+              label="Email"
               hint="example@email.com"
               v-model="email"
               :error-messages="emailErrors"
@@ -181,8 +189,8 @@
               @blur="$v.email.$touch()"
               ></v-text-field>
 
-            <v-btn block color="success" @click="send" :disabled="!is_complete">Start Conversation</v-btn>
-            <v-btn block color="info" @click="send_courses" :disabled="!is_complete">Just Send Me My Courses</v-btn>
+            <v-btn block color="success" @click="send" :disabled="!is_complete">Talk With a Training Specialist</v-btn>
+            <v-btn block color="info" @click="send_courses" :disabled="!is_complete">Send Me My Course List</v-btn>
             <v-btn block color="info" @click="send_help_info" :disabled="!form_is_complete">Help Me Choose a Curriculum</v-btn>
           </div>
         </v-layout>
@@ -1072,38 +1080,71 @@
       },
 
       send () {
-        axios.post('http://127.0.0.1:5000/sendmainemail', {
+        var courseTitles = []
+        for (var i = 0; i < this.selectedCourses.length; i++) {
+          courseTitles.push(this.selectedCourses[i].title)
+        }
+        axios.post('https://n7qzqstup9.execute-api.us-east-1.amazonaws.com/Deploy', {
           requester_email: this.email,
           requester_company: this.company,
-          requested_courses: JSON.stringify(this.selectedCourses)
+          requested_courses: courseTitles
         }).then(function (response) {
+          console.log('success')
           console.log(response)
+          alert('Email Sent! A Quansight training specialist will contact you within 2 days.')
+          window.location = 'https://www.quansight.com/learning'
+        }).catch(error => {
+          console.log('error')
+          console.log(error)
+          alert('Error! Could not send email, please wait a few minutes then try again')
         })
-        alert('Success! Email Sent! We will get back to you within a week')
-        window.location = 'https://www.quansight.com/learning'
       },
 
       send_courses () {
-        axios.post('http://127.0.0.1:5000/sendcourseemail', {
+        var courseList = ''
+        for (var i = 0; i < this.selectedCourses.length; i++) {
+          courseList += '<b>' + this.selectedCourses[i].title + '</b>'
+          for (var j = 0; j < this.selectedCourses[i].objectives.length; j++) {
+            courseList += '<dt><p style="margin-left: 20px">' + this.selectedCourses[i].objectives[j].text + '</p></dt></br>'
+            if (this.selectedCourses[i].objectives[j].sublist.length > 0) {
+              for (var k = 0; k < this.selectedCourses[i].objectives[j].sublist.length; k++) {
+                courseList += '<dd>' + this.selectedCourses[i].objectives[j].sublist[k] + '</dd>'
+              }
+            }
+          }
+          courseList += '<br/>'
+        }
+        console.log(courseList)
+        axios.post('https://ssa8biwrpg.execute-api.us-east-1.amazonaws.com/Deploy', {
           requester_email: this.email,
           requester_company: this.company,
-          requested_courses: JSON.stringify(this.selectedCourses)
+          requested_courses: courseList
         }).then(function (response) {
+          console.log('success')
           console.log(response)
+          alert('Email Sent! Your selected courses with objectives are ready for your viewing.')
+          window.location = 'https://www.quansight.com/learning'
+        }).catch(error => {
+          console.log('error')
+          console.log(error)
+          alert('Error! Could not send email, please wait a few minutes then try again')
         })
-        alert('Success! Email Sent! We will get back to you within a week')
-        window.location = 'https://www.quansight.com/learning'
       },
 
       send_help_info () {
-        axios.post('http://127.0.0.1:5000/sendinfohelpemail', {
+        axios.post('https://be3ubtrg2m.execute-api.us-east-1.amazonaws.com/Deploy', {
           requester_email: this.email,
           requester_company: this.company
         }).then(function (response) {
+          console.log('success')
           console.log(response)
+          alert('Email Sent! A Quansight training specialist will contact you within 2 days.')
+          window.location = 'https://www.quansight.com/learning'
+        }).catch(error => {
+          console.log('error')
+          console.log(error)
+          alert('Error! Could not send email, please wait a few minutes then try again')
         })
-        alert('Success! Email Sent! We will get back to you within a week')
-        window.location = 'https://www.quansight.com/learning'
       }
     }
   }
